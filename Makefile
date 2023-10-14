@@ -8,27 +8,23 @@ install:
 	pre-commit install; \
 	git config --bool flake8.strict true; \
 
-run:
-	echo "run"
-
-# Continuous Integration
-typing:
-	mypy src
-
-checker: 
-	flake8 src
-
 formatter:
 	black src
+
+# Continuous Integration
+typing: formatter
+	mypy src
+
+lint:
+	flake8  src
 
 build:
 	python install setup.py
 
-tests:
+test:
 	pytest
 
 # Continuous Deployment/Delivery
-
 coverage:
 	echo "run coverage"
 

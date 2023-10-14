@@ -2,20 +2,20 @@
 
 from setuptools import setup, find_packages
 
-with open("requirements.txt") as f:
-    REQUIRED_PACKAGES = f.read().splitlines()
-
-with open("requirements.dev.txt") as f:
-    DEV_PACKAGES = f.read().splitlines()
+REQUIRED_PACKAGES = open("requirements.txt").readlines()
+DEV_PACKAGES = open("requirements.dev.txt").readlines()
 
 setup(
     name="python-pkg",
     version="0.0.1",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
     author="AcNaWeb",
     author_email="ac@marketmining.com.br",
     url="https://github.com/acnaweb/python",
     install_requires=REQUIRED_PACKAGES,
     extras_require={"dev": DEV_PACKAGES},
     packages=find_packages(include=["src", "src.*"]),
-    # entry_points={"console_scripts": ["dhuoflow=src.main:main"]},
+    platforms="any",
+    entry_points={"console_scripts": ["python-pkg=src.main:main"]},
 )
