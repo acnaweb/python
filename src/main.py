@@ -1,2 +1,2 @@
-if __name__ == "__main__":
-    print("Hello workd")
+def main() -> None:
+    print("Hello world")

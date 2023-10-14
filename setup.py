@@ -14,7 +14,7 @@ setup(
     author_email="ac@marketmining.com.br",
     url="https://github.com/acnaweb/python",
     install_requires=REQUIRED_PACKAGES,
-    extras_require={"dev": DEV_PACKAGES},
+    extras_require={"interactive": DEV_PACKAGES},
     packages=find_packages(include=["src", "src.*"]),
     platforms="any",
     entry_points={"console_scripts": ["python-pkg=src.main:main"]},
