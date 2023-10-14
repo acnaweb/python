@@ -2,7 +2,7 @@
 install:
 	python -m venv venv; \
 	. venv/bin/activate; \
-	pip install -U pip; \
+	pip install --upgrade pip; \
 	pip install pre-commit; \
 	pip install -e .[dev]; \
 	pre-commit install; \
