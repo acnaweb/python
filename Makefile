@@ -19,7 +19,7 @@ lint:
 	flake8  src
 
 build:
-	python install setup.py
+	python setup.py install
 
 test:
 	pytest
@@ -38,4 +38,4 @@ smoke_test:
 	echo "smoke test"	
 
 run:
-	python src/main.py
+	python src/main.py --action action1 --param1 "Olá! Mundo"
