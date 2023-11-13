@@ -1,3 +1,5 @@
+export IMAGE_NAME=my-image
+
 # Local development
 install:
 	python -m venv venv; \
@@ -24,6 +26,14 @@ build:
 test:
 	pytest
 
+# Containter
+
+c_build:
+	docker build -t ${IMAGE_NAME} .
+
+c_run:
+	docker run -d ${IMAGE_NAME}
+
 # Continuous Deployment/Delivery
 coverage:
 	echo "run coverage"
@@ -39,3 +49,4 @@ smoke_test:
 
 run:
 	python src/main.py --action action1 --param1 "Olá! Mundo"
+
