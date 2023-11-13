@@ -32,7 +32,7 @@ c_build:
 	docker build -t ${IMAGE_NAME} .
 
 c_run:
-	docker run -d ${IMAGE_NAME}
+	docker run --env-file .env -d ${IMAGE_NAME} 
 
 # Continuous Deployment/Delivery
 coverage:
@@ -48,5 +48,4 @@ smoke_test:
 	echo "smoke test"	
 
 run:
-	python src/main.py --action action1 --param1 "Olá! Mundo"
-
+	python src/main.py
