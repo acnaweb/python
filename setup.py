@@ -17,5 +17,4 @@ setup(
     extras_require={"interactive": DEV_PACKAGES},
     packages=find_packages(include=["src", "src.*"]),
     platforms="any",
-    entry_points={"console_scripts": ["python-pkg=src.main:main"]},
 )

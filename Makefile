@@ -48,4 +48,4 @@ smoke_test:
 	echo "smoke test"	
 
 run:
-	python src/main.py
+	python main.py --action action1 --param1 "valor qualquer"
