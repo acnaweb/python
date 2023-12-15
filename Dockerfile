@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip install -e .
+RUN pip install --no-cache-dir  -e . && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 
 CMD [ "python", "src/main.py"]
