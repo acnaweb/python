@@ -13,6 +13,9 @@ install:
 formatter:
 	black src
 
+help:
+	python setup.py --help-commands		
+
 # Continuous Integration
 typing: formatter
 	mypy src
@@ -35,6 +38,7 @@ c_run:
 	docker run --env-file .env -d ${IMAGE_NAME} 
 
 # Continuous Deployment/Delivery
+
 coverage:
 	echo "run coverage"
 
@@ -47,5 +51,15 @@ deploy_production:
 smoke_test:
 	echo "smoke test"	
 
+package: 
+	rm -rf dist
+	python setup.py sdist --formats=zip
+
+publish: test package 
+	twine upload dist/*
+
+# Run
+
 run:
 	python main.py --action action1 --param1 "valor qualquer"
+
