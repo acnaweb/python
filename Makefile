@@ -18,24 +18,11 @@ typing: formatter
 lint:
 	flake8  src
 
-build:
-	python install setup.py
-
 test:
 	pytest
 
-# Continuous Deployment/Delivery
-coverage:
-	echo "run coverage"
-
-deploy_staging:
-	echo "deploy staging"
-
-deploy_production:
-	echo "deploy production"
-
-smoke_test:
-	echo "smoke test"	
-
 run:
 	python src/main.py
+
+build:
+	python install setup.py	
