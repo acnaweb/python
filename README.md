@@ -12,7 +12,6 @@ Template for Python repository.
 | **MINOR**            | `feat: adiciona suporte a exportação em CSV`                                                  | x.1.x (MINOR)        |
 | **MINOR**            | `feat: novo endpoint para consulta de usuários`                                               | x.1.x (MINOR)        |
 | **PATCH**            | `fix: corrige bug no cálculo de imposto`                                                      | x.x.1 (PATCH)        |
-| **PATCH**            | `chore: atualiza dependência do requests`                                                     | x.x.1 (PATCH)        |
 | **PATCH**            | `refactor: melhora legibilidade da função de validação`                                       | x.x.1 (PATCH)        |
 
 ## References
