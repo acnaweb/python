@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/acnaweb/python/compare/v0.3.1...v0.4.0) (2025-04-05)
+
+
+### Features
+
+* update release-please ([ad9d8ba](https://github.com/acnaweb/python/commit/ad9d8bae6a7ddb8d0a16cf9963a2ad12b4bf9938))
+* update release-please ([355f81b](https://github.com/acnaweb/python/commit/355f81b16067dc3c002d55834eac07826aaf4445))
+
 ## [0.3.1](https://github.com/acnaweb/python/compare/v0.3.0...v0.3.1) (2025-04-05)
 
 
