@@ -1,6 +1,6 @@
 # Python
 
-Template for Python repository
+Template for Python repository.
 
 ## References
 
@@ -8,3 +8,4 @@ Template for Python repository
 - https://docs.pytest.org/en/stable/reference/customize.html
 - https://www.conventionalcommits.org/en/v1.0.0/
 - https://keepachangelog.com/en/1.0.0/
+- https://semver.org/
