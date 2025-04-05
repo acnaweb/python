@@ -22,3 +22,4 @@ Template for Python repository.
 - https://keepachangelog.com/en/1.0.0/
 - https://semver.org/
 - https://12factor.net/pt_br/
+- https://github.com/googleapis/release-please
