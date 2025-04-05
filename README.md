@@ -15,7 +15,6 @@ Template for Python repository.
 | **PATCH**            | `chore: atualiza dependência do requests`                                                     | x.x.1 (PATCH)        |
 | **PATCH**            | `refactor: melhora legibilidade da função de validação`                                       | x.x.1 (PATCH)        |
 
-
 ## References
 
 - https://superuser.com/questions/816143/how-to-run-pip-in-non-interactive-mode
