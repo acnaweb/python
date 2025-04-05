@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/acnaweb/python/compare/v0.4.0...v0.4.1) (2025-04-05)
+
+
+### Bug Fixes
+
+* test ([bc13636](https://github.com/acnaweb/python/commit/bc1363690d2a45803623cc8540f86513240a557f))
+
 ## [0.4.0](https://github.com/acnaweb/python/compare/v0.3.1...v0.4.0) (2025-04-05)
 
 
