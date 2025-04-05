@@ -1,0 +1,88 @@
+name: Continuous Deployment
+
+on:
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Escolha o ambiente para deploy'
+        type: choice
+        required: true        
+        options:
+          - dev
+          - stg
+          - prd
+
+jobs:
+  build-and-delivery:
+    runs-on: ubuntu-latest
+    environment: ${{ github.event.inputs.environment }}
+
+    steps:
+      # Verificar se a tag foi selecionada
+    - name: Verificar se a tag foi selecionada
+      run: |
+        TAG="${GITHUB_REF#refs/tags/}"
+        if [[ ! "$TAG" =~ ^v ]]; then
+          echo "Tag não selecionada. Abortando o workflow."
+          exit 1
+        fi
+        echo "GIT_TAG=$TAG" >> $GITHUB_ENV
+        echo "DOCKER_TAG=${{ vars.GCP_REGION }}-docker.pkg.dev/${{ vars.GCP_PROJECT }}/repository/image:$TAG" >> $GITHUB_ENV
+
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Authenticate to Google Cloud
+      uses: 'google-github-actions/auth@v2'
+      with:
+        credentials_json: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}' 
+
+    - name: 'Docker Auth'
+      uses: docker/login-action@v3
+      with:
+        registry: '${{ vars.GCP_REGION }}-docker.pkg.dev'
+        username: _json_key
+        password: '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}'  
+        
+    - name: Build and Push Container
+      run: |-          
+        echo "${DOCKER_TAG}"
+        docker build -t "${DOCKER_TAG}" .        
+        docker push "${DOCKER_TAG}"
+
+    - name: Deploy Cloud Job Run
+      run: |
+        echo "--set-env-vars:" >> env-vars.yaml
+        echo "  ASPNETCORE_ENVIRONMENT: ${{ vars.ASPNETCORE_ENVIRONMENT }}" >> env-vars.yaml
+        echo "  CONNECTION_STRING: ${{ vars.CONNECTION_STRING }}" >> env-vars.yaml
+        echo "  CORS_ALLOWED_ORIGINS: ${{ vars.CORS_ALLOWED_ORIGINS }}" >> env-vars.yaml
+
+        cat env-vars.yaml   
+
+        # Tenta descrever o job. Se não existir, cria-o e, ao criar, já estará com a imagem correta.
+        if ! gcloud run jobs describe ${{ vars.CLOUD_RUN_NAME }} --region ${{ vars.GCP_REGION }}; then
+          echo "Job não existe. Criando o job..."
+
+          gcloud run jobs create ${{ vars.CLOUD_RUN_NAME }} \
+            --image "${DOCKER_TAG}" \
+            --region ${{ vars.GCP_REGION }} \
+            --tasks 1 \
+            --max-retries 1 \
+            --cpu ${{ vars.CLOUD_RUN_CPU }} \
+            --memory ${{ vars.CLOUD_RUN_MEMORY }} \
+            --service-account "${{ vars.GCP_SA_KEY }}" \
+            --flags-file env-vars.yaml
+
+        else
+          echo "Job existe. Atualizando imagem..."
+          gcloud run jobs update ${{ vars.CLOUD_RUN_NAME }} \
+            --image "${DOCKER_TAG}" \
+            --region ${{ vars.GCP_REGION }} \
+            --tasks 1 \
+            --max-retries 1 \
+            --cpu ${{ vars.CLOUD_RUN_CPU }} \
+            --memory ${{ vars.CLOUD_RUN_MEMORY }} \
+            --service-account "${{ vars.GCP_SA_KEY }}" \
+            --flags-file env-vars.yaml
+        fi

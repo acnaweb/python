@@ -1,0 +1,6 @@
+{
+    "local_image": "image_name",
+    "job_args": [
+        "Olá"
+    ]
+}

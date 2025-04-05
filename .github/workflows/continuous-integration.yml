@@ -1,0 +1,38 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main   
+
+jobs:
+  run-integration:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install --no-cache-dir -e .[quality]
+
+    - name: Unit tests
+      run: pytest tests      
+
+    - name: Code quality
+      run: |
+        pip install pre-commit
+        pre-commit run --files src
+
+    - name: Lint Dockerfile
+      run: docker run  -v ./Dockerfile:/tmp/Dockerfile hadolint/hadolint hadolint /tmp/Dockerfile       
+
+    - name: Build image
+      run: docker build -t local-image .
