@@ -12,7 +12,7 @@ chore: atualiza dependência requests
 refactor: melhora leitura do código de autenticação
 ```
 
-### Minor
+### Minor 
 
 ```
 feat: novo endpoint para consultar produtos por nome
