@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/acnaweb/python/compare/v0.3.0...v0.3.1) (2025-04-05)
+
+
+### Bug Fixes
+
+* test branch merged ([4e28bb2](https://github.com/acnaweb/python/commit/4e28bb2148f028f7b56ed5ad40b34574a2a531c6))
+
 ## [0.3.0](https://github.com/acnaweb/python/compare/v0.2.0...v0.3.0) (2025-04-05)
 
 
