@@ -23,7 +23,7 @@ if os.path.exists("README.md"):
 
 setup(
     name="python-pkg",
-    version="0.0.1",
+    version="0.1.0",
     long_description=README,
     long_description_content_type="text/markdown",
     author="acnaweb",
