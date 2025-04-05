@@ -4,27 +4,17 @@ Template for Python repository.
 
 ## Commits
 
-#### Patch
 
-```
-fix: corrige bug no login de usuários
-chore: atualiza dependência requests
-refactor: melhora leitura do código de autenticação
-```
+| Tipo de Commit       | Exemplo de Mensagem de Commit                                                                 | Resultado na Versão |
+|----------------------|-----------------------------------------------------------------------------------------------|----------------------|
+| **MAJOR**            | `feat: muda contrato da API\n\nBREAKING CHANGE: remove campo 'email' da resposta do endpoint` | 1.x.x (MAJOR)        |
+| **MAJOR**            | `refactor!: troca sistema de autenticação para OAuth`                                         | 1.x.x (MAJOR)        |
+| **MINOR**            | `feat: adiciona suporte a exportação em CSV`                                                  | x.1.x (MINOR)        |
+| **MINOR**            | `feat: novo endpoint para consulta de usuários`                                               | x.1.x (MINOR)        |
+| **PATCH**            | `fix: corrige bug no cálculo de imposto`                                                      | x.x.1 (PATCH)        |
+| **PATCH**            | `chore: atualiza dependência do requests`                                                     | x.x.1 (PATCH)        |
+| **PATCH**            | `refactor: melhora legibilidade da função de validação`                                       | x.x.1 (PATCH)        |
 
-### Minor 
-
-```
-feat: novo endpoint para consultar produtos por nome
-```
-
-### Major
-
-```
-git commit -m "feat: altera formato da resposta da API de produtos
-
-BREAKING CHANGE: o campo 'preco' agora é um objeto com 'valor' e 'moeda'"
-```
 
 ## References
 
