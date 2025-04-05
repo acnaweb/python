@@ -18,6 +18,9 @@ run:
 run_python:
 	docker run -it -v .:/shared/ python:3.12-slim /bin/bash	
 
+run_jupyter:
+	jupyter lab	
+
 docker_build:
 	docker build -t ${LOCAL_IMAGE} .
 
