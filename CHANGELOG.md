@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0](https://github.com/acnaweb/python/compare/v0.4.1...v0.5.0) (2025-05-17)
+
+
+### Features
+
+* mensagem 2 ([5969279](https://github.com/acnaweb/python/commit/5969279d87fa97018f71ad1b537477c0d8272b83))
+* mensagem 3 ([86066e4](https://github.com/acnaweb/python/commit/86066e45bfe4477a2e0b2a8473e8e0f22895b742))
+* update main ([356c057](https://github.com/acnaweb/python/commit/356c057f7c3ff69b157a7316f636df6de3db3143))
+
 ## [0.4.1](https://github.com/acnaweb/python/compare/v0.4.0...v0.4.1) (2025-04-05)
 
 
